@@ -5,7 +5,7 @@ use v6;
 grammar URL {
   rule TOP { <scheme> '://' <authority> <path> <query> <fragment> }
 
-  rule authority { [<userinfo> '@']? <host> [':'<port>]? }
+  rule authority { [<userinfo> '@']? <host> [':' <port>]? }
   rule path { [ '' | '/' | '/' <path-component>+ % '/' ['/']?]}
   rule userinfo { <username> [':' <password> ]? }
   rule host { <host-component>+ % '.' }
@@ -27,5 +27,5 @@ grammar URL {
   token ws { '' }
 }
 
-say URL.parse("ftp://user:password@www.google.com/foo/bar/baz?foo=bar&baz=qux#hello")
+say URL.parse("https://user:password@www.example.com:1234/foo/bar/baz?foo=bar&baz=qux#hello")
 
